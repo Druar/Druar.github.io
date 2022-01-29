@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Music Survey</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css.html">
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  let user = getCookie("username");
+  if (user != "") {
+    alert("Welcome again " + user);
+  } else {
+     user = prompt("Please enter your name:","");
+     if (user != "" && user != null) {
+       setCookie("username", user, 30);
+     }
+  }
+}
+</script>
+</head>
+
+<body onload="checkCookie()"></body>
+
+    <h2>Music Survey</h2>
+    <form action="https://idesstage2.bc.edu/class/results.php"method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" value="Enter name"><br>
+        <label for="email">Email Address:</label> <br>
+        <input type="email" id="email" name="email"><br>
+        
+       <legend> <p>Select your favorite Genre of Music: </p></legend>
+<form action="https://idesstage2.bc.edu/class/results.php">
+    <fieldset>
+  <input type="radio" id="Pop" name="fav_music" value="Pop">
+  <label for="Pop">Pop</label><br>
+  <input type="radio" id="Rap" name="fav_music" value="Rap">
+  <label for="Rap">Rap</label><br>
+  <input type="radio" id="Folk" name="fav_music" value="Folk">
+  <label for="Folk">Folk</label><br><br>
+  <input type="radio" id="Classical" name="fav_music" value="Classical">
+  <label for="Classical">Classical</label><br><br>
+  <input type="radio" id="Rock" name="fav_music" value="Rock">
+  <label for="Rock">Rock</label><br><br>
+  <input type="radio" id="Other" name="fav_music" value="Other">
+  <label for="Other">Other</label><br><br></fieldset>
+  
+ <legend> <p>How often do you purchase CD's? </p> </legend>
+  <form>
+      <fieldset>
+    <input type="checkbox" id="Weekly" name="Weekly" value="weekly">
+    <label for="Weekly"> Weekly</label><br>
+    <input type="checkbox" id="yearly" name="Yearly" value="yearly">
+    <label for="Yearly"> A few per year</label><br>
+    <input type="checkbox" id="Monthly" name="Monthly" value="Monthly">
+    <label for="Monthly"> Monthly</label> <br>
+    <input type="checkbox" id="never" name="never" value="never">
+    <label for="never"> Never</label>
+</fieldset>
+  </form> 
+  <form action="https://idesstage2.bc.edu/class/results.php"
+  ></form>
+      <br><br>
+      <P>Select Locations you listen to Music</P>
+    <label for="location"></label>
+    <select id="location" name="Locations">
+      <option value="home">At home</option>
+      <option value="car">In car</option>
+      <option value="school">At school</option>
+      <option value="cooking">while cooking</option>
+    </select>
+
+  <br><br>
+  <label for="answer">What role does music play in your life?</label><br>
+        <input type="textarea" name="feedback" size="60" rows="3" >
+       
+
+       
+       <br> <input type="submit" value="Send Survey">
+      </form> 
+      
+      
+      
+</body>
+</html>
